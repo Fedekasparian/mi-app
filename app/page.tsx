@@ -8,6 +8,7 @@ export default function Page() {
   const [nombre, setNombre] = useState('')
   const [fechaIngreso, setFechaIngreso] = useState('')
 
+  // Este efecto se ejecuta al cargar la página para obtener la lista de clientes
   useEffect(() => {
     fetchClientes()
   }, [])
@@ -18,6 +19,7 @@ export default function Page() {
     setClientes(data)
   }
 
+  // Esta función envía los datos del formulario al backend para agregar un nuevo cliente
   const enviarCliente = async (e: any) => {
     e.preventDefault()
 
@@ -42,6 +44,7 @@ export default function Page() {
     }
   }
 
+  // Esta función envía los datos del formulario al backend para eliminar un cliente
   const eliminarCliente = async (e: any) => {
     e.preventDefault()
 
@@ -102,7 +105,7 @@ export default function Page() {
       <ul className="list-disc pl-5">
         {clientes.map((c, i) => (
           <li key={i}>
-            {c.id} – {c.nombre} – {new Date(c.fecha_ingreso).toLocaleDateString()}
+            {c.nombre} – {new Date(c.fecha_ingreso).toLocaleDateString()}
           </li>
         ))}
       </ul>
